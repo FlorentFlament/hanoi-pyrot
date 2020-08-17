@@ -93,13 +93,24 @@ def test():
     test_4pools_2tapes()
     print("done")
 
+def distribution():
+    backups = {}
+    # Favorite setup: 15 pools, 2 tapes per pool -> 30 tapes
+    # Oscillates between 67 and 89 years of backup - 1.5 * 2**(15-1) / 365
+    hanoi = HanoiRotation.from_scratch(15, 2)
+    for i in range(365*50):
+        backups[hanoi.next()]= i
+        v = sorted(backups.values())
+        print(i, round((v[-1]-v[0])/365, 2), [a-b for a,b in zip(v[1:], v[:-1])])
+    print(v)
+
 def main():
     try:
         hanoi = HanoiRotation.from_statefile()
     except FileNotFoundError:
-        hanoi = HanoiRotation.from_scratch(20, 2)
+        hanoi = HanoiRotation.from_scratch(15, 2)
     pool, tape = hanoi.next()
     print("{}-{}".format(pool, tape))
     hanoi.save_state()
 
-main()
+distribution()

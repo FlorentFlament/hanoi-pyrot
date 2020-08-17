@@ -54,7 +54,6 @@ def test_4pools_1tape():
     hanoi = HanoiRotation(4, 1)
     for i, v in enumerate(expected):
         t = hanoi.next_tape()
-        print(t)
         if v != t:
             print("*Error* at iteration {}: expected tape '{}' but got '{}'".format(i, v, t))
     
@@ -65,7 +64,6 @@ def test_4pools_2tapes():
     hanoi = HanoiRotation(4, 2)
     for i, v in enumerate(expected):
         t = hanoi.next_tape()
-        print(t)
         if v != t:
             print("*Error* at iteration {}: expected tape '{}' but got '{}'".format(i, v, t))
 
@@ -74,6 +72,7 @@ def test():
     test_4pools_1tape()
     print("test_4pools_2tapes")
     test_4pools_2tapes()
+    print("done")
 
 def main():
     hanoi = HanoiRotation(20, 2)

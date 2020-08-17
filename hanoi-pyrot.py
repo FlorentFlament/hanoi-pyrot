@@ -13,19 +13,19 @@ class HanoiRotation:
     def __next_pool(self):
         while True:
             if len(self.__stack) == 0:
-                self.__stack.append(('e', self.__n_pools-1))
+                self.__stack.append(['e', self.__n_pools-1])
                 return self.__n_pools-1
 
             verb, pool = self.__stack.pop()
             
             if verb == 'e':
                 if pool == 0:
-                    self.__stack.append(('v', 0))
+                    self.__stack.append(['v', 0])
                     
                 else:
-                    self.__stack.append(('e', pool-1))
-                    self.__stack.append(('v', pool))
-                    self.__stack.append(('e', pool-1))
+                    self.__stack.append(['e', pool-1])
+                    self.__stack.append(['v', pool])
+                    self.__stack.append(['e', pool-1])
                 
             elif verb == 'v':
                 return pool

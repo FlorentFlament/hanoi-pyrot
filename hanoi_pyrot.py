@@ -113,4 +113,4 @@ def main():
     print("{}-{}".format(pool, tape))
     hanoi.save_state()
 
-distribution()
+main()
